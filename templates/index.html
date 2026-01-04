@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Prediction - Typing Behavior Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Stress Level Predictor</h1>
+            <p class="subtitle">Analyze your stress through typing behavior</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Instructions -->
+            <div class="instructions">
+                <h3>📝 Instructions:</h3>
+                <ol>
+                    <li>Type naturally in the text box below (at least 50 characters)</li>
+                    <li>Your typing patterns will be analyzed in real-time</li>
+                    <li>Click "Analyze Stress Level" to get your result</li>
+                </ol>
+            </div>
+
+            <!-- Typing Area -->
+            <div class="typing-section">
+                <label for="typing-box">Start typing here:</label>
+                <textarea 
+                    id="typing-box" 
+                    placeholder="Type anything that comes to mind... The system will analyze your typing speed, pauses, and error corrections to predict your stress level."
+                    rows="8"
+                ></textarea>
+                
+                <!-- Real-time Stats -->
+                <div class="stats-box">
+                    <div class="stat">
+                        <span class="stat-label">Characters:</span>
+                        <span id="char-count" class="stat-value">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Typing Speed:</span>
+                        <span id="typing-speed" class="stat-value">0</span>
+                        <span class="stat-unit">keys/sec</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Backspaces:</span>
+                        <span id="backspace-count" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <button id="analyze-btn" onclick="analyzeStress()">
+                    🔍 Analyze Stress Level
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" class="results-section hidden">
+                <h2>📊 Analysis Results</h2>
+                
+                <div class="stress-result">
+                    <div class="stress-level">
+                        <span class="label">Stress Level:</span>
+                        <span id="stress-level" class="value"></span>
+                    </div>
+                    <div class="confidence">
+                        <span class="label">Confidence:</span>
+                        <span id="confidence" class="value"></span>
+                    </div>
+                </div>
+
+                <!-- Feature Visualization -->
+                <div class="features">
+                    <h3>Your Typing Metrics:</h3>
+                    <div class="feature-item">
+                        <span>Typing Speed:</span>
+                        <div class="bar-container">
+                            <div id="speed-bar" class="bar"></div>
+                        </div>
+                        <span id="speed-value"></span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Average Pause:</span>
+                        <div class="bar-container">
+                            <div id="pause-bar" class="bar"></div>
+                        </div>
+                        <span id="pause-value"></span>
+                    </div>
+                    <div class="feature-item">
+                        <span>Error Rate:</span>
+                        <div class="bar-container">
+                            <div id="error-bar" class="bar"></div>
+                        </div>
+                        <span id="error-value"></span>
+                    </div>
+                </div>
+
+                <!-- Tips Section -->
+                <div class="tips-section">
+                    <h3>💡 Recommendations:</h3>
+                    <ul id="tips-list"></ul>
+                </div>
+
+                <button onclick="resetApp()" class="reset-btn">
+                    ↻ Try Again
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with ❤️ for Hackathon | Using ML to promote mental wellness</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
